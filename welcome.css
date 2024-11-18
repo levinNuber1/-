@@ -1,0 +1,243 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Mono', monospace; /* Set Space Mono as the primary font */
+    background: linear-gradient(135deg, #2e3440 0%, #3b4252 50%, #4c566a 100%);
+    color: #eceff4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Slider Container */
+.slider-container {
+    position: relative;
+    width: 85%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 20px;
+    background: rgba(59, 66, 82, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Slide and Card Design */
+.slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transition: opacity 1s ease, transform 1s ease;
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Slide Card Design */
+.slide-card {
+    background: #3b4252;
+    color: #eceff4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 15px;
+    padding: 20px;
+    width: 80%;
+    max-height: 75%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    gap: 35px;
+    overflow: hidden; /* Prevent scrolling and hide overflowed content */
+    border: 3px solid #88c0d0; /* Border for the entire card */
+}
+
+/* Content Animation - Fade-in from the side */
+@keyframes fadeInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Text Section Styling */
+.text-container {
+    flex: 1;
+    padding-right: 20px;
+    animation: fadeInFromLeft 1s ease-out forwards; /* Slide in from the left */
+    border-right: 3px solid #88c0d0; /* Border separating text from the image */
+    border-radius: 15px;
+}
+
+.text-container h1, .text-container h2 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 700;
+    color: #88c0d0;
+    margin-bottom: 20px;
+}
+
+.text-container h2 {
+    font-size: 1.8rem; /* Reduced header size for better fit */
+}
+
+.text-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* Image Section Styling */
+.image-container {
+    flex: 1;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInFromRight 1s ease-out forwards; /* Slide in from the right */
+    border-left: 3px solid #88c0d0; /* Border separating the image from the text */
+}
+
+/* Both the text and image containers appear together with a slight delay */
+.image-container img {
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Features and Commands Styling */
+.features-matrix, .commands-matrix {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px; /* Reduced gap for better fit */
+    border: 2px solid #81a1c1; /* Add border around the matrix */
+    border-radius: 10px;
+    padding: 10px; /* Reduced padding */
+    background-color: rgba(0, 0, 0, 0.2);
+    max-height: 60vh; /* Fixed maximum height for overflow */
+    overflow-y: hidden; /* Enable scrolling within matrix if needed */
+}
+
+/* Scrollbar Styles for Matrices */
+.features-matrix::-webkit-scrollbar,
+.commands-matrix::-webkit-scrollbar {
+    width: 8px;
+}
+
+.features-matrix::-webkit-scrollbar-thumb,
+.commands-matrix::-webkit-scrollbar-thumb {
+    background-color: #4c566a;
+    border-radius: 10px;
+}
+
+/* Feature Item and Command Item Styling */
+.feature-item, .command-item {
+    padding: 5px; /* Reduced padding for better fit */
+    font-size: 0.9rem; /* Smaller font size */
+    border: 1px solid #81a1c1;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-item strong, .command-key {
+    color: #88c0d0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.command-item p em {
+    color: #d08770;
+    font-style: normal;
+}
+
+/* Button Styling */
+.join-btn {
+    background: linear-gradient(135deg, #5e81ac, #81a1c1);
+    color: #eceff4;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 20px rgba(94, 129, 172, 0.6);
+}
+
+.join-btn:hover {
+    background-color: #88c0d0;
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* Navigation Arrows */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: #eceff4;
+    background: rgba(46, 52, 64, 0.6);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(94, 129, 172, 0.8);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* Dots Navigation */
+.dots {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: #4c566a;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #81a1c1;
+}

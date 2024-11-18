@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mute - Chat</title>
+    <link rel="stylesheet" href="chat.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Centered Logo to Return to Home Page -->
+    <div class="logo-container">
+        <a href="/welcome/welcome.html"><img src="logo.png" alt="Logo"></a>
+    </div>
+
+    <!-- Chat Box Section -->
+    <section class="chat-box-container">
+        <div class="chat-box">
+            <div class="chat-window" id="chat-window"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type a message..." onkeydown="checkEnter(event)">
+                <button onclick="sendMessage()" class="send-btn">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="chat.js"></script>
+
+</body>
+</html>

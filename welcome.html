@@ -1,0 +1,102 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mute - The Real Private Chat Site</title>
+        <link rel="stylesheet" href="welcome.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+
+    </head>
+    <body>
+
+        <!-- Slider Container -->
+        <div class="slider-container">
+            <!-- Slide 1: Home -->
+            <section class="slide active" id="home">
+                <div class="slide-card">
+                    <div class="text-container">
+                        <h1>Welcome to Mute</h1>
+                        <p>The real private chat site for secure communication.</p>
+                        <p>At Mute, we believe that privacy is a fundamental right. Our platform is built to protect your conversations from prying eyes with state-of-the-art security features. Whether you're discussing personal matters or business secrets, your messages are safe with us.</p>
+                        <a href="/chat/chat.html"><button class="join-btn">Start Chatting</button></a>
+                    </div>
+                    <div class="image-container">
+                        <img src="section1.png" alt="Cyber Security Image">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Features -->
+            <section class="slide" id="features">
+                <div class="slide-card">
+                    <div class="text-container">
+                        <h2>Features</h2>
+                        <div class="features-matrix">
+                            <div class="feature-item">
+                                <strong>Auto-Deleted Messages with Timers</strong>
+                                <p>Messages are automatically deleted after a specified countdown timer. This ensures that sensitive information doesn’t linger in the chat. No more worrying about leaving a digital footprint.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>No Message Moving or Copying</strong>
+                                <p>Messages are fixed within the chat, making it impossible to move or copy them. This prevents content from being extracted outside the chat environment, keeping your discussions private and contained.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Screenshot Blocking</strong>
+                                <p>Screenshot functionality is restricted within the chat, stopping users from capturing chat content and further safeguarding sensitive information. Your privacy is protected, even from internal threats.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>End-to-End Encryption</strong>
+                                <p>All messages are encrypted, ensuring that only you and the recipient can read them. Mute cannot read your messages, and neither can anyone else.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: Commands Guide -->
+            <section class="slide" id="commands">
+                <div class="slide-card">
+                    <div class="text-container">
+                        <h2>Commands Guide</h2>
+                        <div class="commands-matrix">
+                            <div class="command-item">
+                                <strong><span class="command-key">//clear</span></strong>
+                                <p>Clears all messages in the chat window. Use this command to instantly remove your chat history, adding an extra layer of control over your privacy.</p>
+                            </div>
+                            <div class="command-item">
+                                <strong><span class="command-key">number/</span></strong>
+                                <p>(e.g., <em>Hello 5/</em>): Sets a countdown timer for a message, making it disappear after that many seconds. Great for sharing sensitive information that only needs to be seen briefly.</p>
+                            </div>
+                            <div class="command-item">
+                                <strong><span class="command-key">//help</span></strong>
+                                <p>Displays a list of all available commands. Use this if you ever need a reminder of what Mute's commands can do for you.</p>
+                            </div>
+                            <div class="command-item">
+                                <strong><span class="command-key">//lock</span></strong>
+                                <p>Locks the chat window, preventing any new messages from being sent or received until unlocked. Useful for maintaining focus and security.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Arrows -->
+            <button class="prev" aria-label="Previous Slide">&#10094;</button>
+            <button class="next" aria-label="Next Slide">&#10095;</button>
+
+            <!-- Dots Navigation -->
+            <div class="dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+
+        <script src="welcome.js"></script>
+
+    </body>
+    </html>

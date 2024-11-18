@@ -1,0 +1,194 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2e3440, #4c566a);
+    color: #eceff4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Matrix Rain Animation */
+#matrix-canvas {
+    position: absolute; /* Position it behind the content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure it's behind all other elements */
+}
+
+/* Centered Logo - positioned at the top of the screen */
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;  /* Position the logo at the top */
+    top: 20px;  /* Adjust space from the top */
+    z-index: 1; /* Ensure it's in front of other elements */
+}
+
+/* Logo Image Styles */
+.logo-container img {
+    width: 200px;  /* Set the logo size */
+    height: auto;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;  /* Add transition for hover effect */
+}
+
+/* Hover animation - slightly scale and add a brightness effect */
+.logo-container img:hover {
+    transform: scale(1.1);  /* Slightly scale the image */
+    filter: brightness(1.2);  /* Slightly increase brightness */
+}
+
+/* Chat Box Styles */
+.chat-box-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 250px; /* Add space to move the chat box below the logo */
+}
+
+.chat-box {
+    background-color: rgba(59, 66, 82, 0.8); /* Semi-transparent background to allow rain behind */
+    border-radius: 25px;  /* Soft rounded corners */
+    width: 550px;  /* Adjusted width */
+    height: 600px;  /* Adjusted height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);  /* Deeper shadow */
+    padding: 20px;
+    color: #eceff4;
+    overflow: hidden;
+    position: relative; /* Ensure it stays above the matrix */
+}
+
+/* Chat Window */
+.chat-window {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #88c0d0 #3b4252;
+}
+
+.chat-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background-color: #88c0d0;
+    border-radius: 10px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+    background-color: #3b4252;
+    border-radius: 10px;
+}
+
+/* Chat Message Bubbles */
+.chat-message {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    max-width: 80%;
+    display: block;
+    word-wrap: break-word;
+    animation: slide-in 0.5s ease-out;
+    line-height: 1.5;
+}
+
+/* User Message Style */
+.chat-message.user {
+    background-color: rgba(136, 192, 208, 0.7); /* Light cyan for user messages */
+    text-align: left;
+    margin-left: 10px;
+    border-radius: 20px 20px 0 20px;
+}
+
+/* Bot Message Style */
+.chat-message.bot {
+    background-color: rgba(255, 105, 180, 0.7); /* Light pink for bot messages */
+    text-align: left;
+    margin-right: 10px;
+    border-radius: 20px 20px 20px 0;
+}
+
+/* Countdown Timer */
+.timer {
+    font-size: 12px;
+    font-weight: bold;
+    color: #eceff4;
+    margin-top: 5px;
+    text-align: right; /* Aligns timer to the right within the message */
+}
+
+/* Chat Input Container */
+.chat-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    border-top: 2px solid #eceff4;  /* Light border to separate input */
+}
+
+.chat-input-container input {
+    width: 80%;
+    padding: 12px;
+    border-radius: 30px;  /* Larger rounded input */
+    border: 2px solid #88c0d0;
+    font-size: 16px;
+    margin-right: 10px;
+    outline: none;
+    background-color: #3b4252;
+    color: #eceff4;
+}
+
+.chat-input-container input:focus {
+    border-color: #88c0d0;
+    box-shadow: 0 0 8px rgba(136, 192, 208, 0.7); /* Focus effect */
+}
+
+.chat-input-container button {
+    background-color: #88c0d0;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;  /* Rounded button */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 12px rgba(136, 192, 208, 0.4);
+}
+
+.chat-input-container button:hover {
+    background-color: #5e81ac;
+    transform: translateY(-4px);
+}
+
+/* Slide-in animation */
+@keyframes slide-in {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
