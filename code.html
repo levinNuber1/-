@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: linear-gradient(135deg, #2e3440 0%, #3b4252 50%, #4c566a 100%);
+            color: #eceff4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Home Button Positioning */
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #5e81ac, #81a1c1);
+            color: #eceff4;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(94, 129, 172, 0.6);
+        }
+
+        .home-btn:hover {
+            background-color: #88c0d0;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* Slider Container */
+        .slider-container {
+            position: relative;
+            width: 85%;
+            height: 70vh; /* Adjust height for side-by-side layout */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 20px;
+            background: rgba(59, 66, 82, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 5px solid #88c0d0; /* Larger border */
+        }
+
+        /* Slide and Card Design */
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            transition: opacity 1s ease, transform 1s ease;
+            opacity: 0;
+            transform: translateX(100%);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Slide Card Design */
+        .slide-card {
+            background: #3b4252;
+            color: #eceff4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-height: 75%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            gap: 20px;
+            overflow: hidden;
+            border: 5px solid #88c0d0; /* Larger border */
+        }
+
+        /* Content Animation - Fade-in from the side */
+        @keyframes fadeInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInFromRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Title Section Styling */
+        .text-container {
+            flex: 1;
+            padding-right: 20px;
+            animation: fadeInFromLeft 1s ease-out forwards;
+            border-right: 3px solid #88c0d0;
+            border-radius: 15px;
+            text-align: center; /* Center the text */
+        }
+
+        .text-container h1, .text-container h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 700;
+            color: #88c0d0;
+            margin-bottom: 20px;
+        }
+
+        .text-container h2 {
+            font-size: 1.8rem;
+        }
+
+        .text-container p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        /* Divider between title and chat code */
+        .divider {
+            width: 80%;
+            height: 2px;
+            background-color: #88c0d0;
+            margin: 20px 0;
+        }
+
+        /* Code Input Field */
+        .code-input-container {
+            width: 40%; /* Adjust width for side-by-side */
+            padding: 20px;
+            background-color: #3b4252;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .code-input {
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 2px solid #88c0d0;
+            width: 100%;
+            background-color: #2e3440;
+            color: #eceff4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: #81a1c1;
+        }
+
+        /* Button Styling */
+        .join-btn {
+            background: linear-gradient(135deg, #5e81ac, #81a1c1);
+            color: #eceff4;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(94, 129, 172, 0.6);
+        }
+
+        .join-btn:hover {
+            background-color: #88c0d0;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Home Button -->
+    <button class="home-btn" onclick="goHome()">Go Home</button>
+
+    <div class="slider-container">
+        <div class="slide active">
+            <div class="slide-card">
+                <!-- Title Section -->
+                <div class="text-container">
+                    <h1>Welcome to Our Website</h1>
+                    <h2>Chat with our support team</h2>
+                    <p>Enter the secret code below to start the chat</p>
+                </div>
+
+                <!-- Code Input Section -->
+                <div class="code-input-container">
+                    <input type="text" id="chatCode" class="code-input" placeholder="Enter code here" />
+                    <button class="join-btn" onclick="startChat()">Start Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startChat() {
+            const code = document.getElementById('chatCode').value;
+            const correctCode = "12345"; // Set your actual code here
+
+            if (code === correctCode) {
+                // Redirect to chat page if the code is correct
+                window.location.href = "chat.html"; // Replace with your chat page URL
+            } else {
+                alert("Incorrect code! Please try again.");
+            }
+        }
+
+        function goHome() {
+            // Redirect to the homepage
+            window.location.href = "index.html"; // Replace with your homepage URL
+        }
+    </script>
+
+</body>
+</html>
